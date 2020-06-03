@@ -7,35 +7,41 @@ function depthFirstSearch(FamilyMember $aFamilyMember, string $searchedPerson) :
 
     echo $aFamilyMember->getName() . '<br>';
 
-    if($aFamilyMember->getName() === $searchedPerson) return $aFamilyMember;
+    if ($aFamilyMember->getName() === $searchedPerson) {
+        return $aFamilyMember;
+    }
 
-    if($aFamilyMember->getMum()) $foundPerson = depthFirstSearch($aFamilyMember->getMum(), $searchedPerson);
-    
-    if($aFamilyMember->getDad()) $foundPerson = depthFirstSearch($aFamilyMember->getDad(), $searchedPerson);
+    if ($aFamilyMember->getMum()) {
+        $foundPerson = depthFirstSearch($aFamilyMember->getMum(), $searchedPerson);
+    }
+
+    if ($aFamilyMember->getDad()) {
+        $foundPerson = depthFirstSearch($aFamilyMember->getDad(), $searchedPerson);
+    }
 
     return $foundPerson;
 }
 
-function breadthFirstSearch(FamilyMember $rootFamilyMember, string $searchedPerson, array $queue){
-
-    $foundPerson = null;
+function breadthFirstSearch(FamilyMember $rootFamilyMember, string $searchedPerson, array $queue = []){
 
     if($rootFamilyMember->getName() === $searchedPerson){
         echo $rootFamilyMember->getName() . '<br>';
         return $rootFamilyMember;
     }
 
-    if($rootFamilyMember->getMum()) array_push($queue, $rootFamilyMember->getMum());
+    if ($rootFamilyMember->getMum()) {
+        array_push($queue, $rootFamilyMember->getMum());
+    }
 
-    if($rootFamilyMember->getDad()) array_push($queue, $rootFamilyMember->getDad());
+    if ($rootFamilyMember->getDad()) {
+        array_push($queue, $rootFamilyMember->getDad());
+    }
 
     if(!empty($queue)){
         echo $rootFamilyMember->getName() . '<br>';
         $next_person = array_shift($queue);
-        $foundPerson = breadthFirstSearch($next_person, $searchedPerson, $queue);
+        return breadthFirstSearch($next_person, $searchedPerson, $queue);
     }
-
-    return $foundPerson;
 }
 
 function breadthFirstSearchNoGlobalQueue(FamilyMember $rootFamilyMember, string $searchedPerson) :?FamilyMember
@@ -52,9 +58,13 @@ function breadthFirstSearchNoGlobalQueue(FamilyMember $rootFamilyMember, string 
            return $next_person;
        }
 
-       if($next_person->getMum()) array_push($queue, $next_person->getMum());
+       if ($next_person->getMum()) {
+           array_push($queue, $next_person->getMum());
+       }
 
-       if($next_person->getDad()) array_push($queue, $next_person->getDad());
+       if ($next_person->getDad()) {
+           array_push($queue, $next_person->getDad());
+       }
     }
 
     return false;

@@ -18,14 +18,13 @@
     $stuart_herbert = new FamilyMember("Stuart Herbert", $may_herbert, $david_herbert);
     $sue_herbert = new FamilyMember("Sue Herbert", $eirian_wintour);
     $rich_herbert = new FamilyMember("Rich Herbert",$sue_herbert, $stuart_herbert); 
-    $queue = [];
 
     echo '<pre>' . '<p>Depth First Search</p>';
     var_dump(depthFirstSearch($rich_herbert, $david_herbert->getName()));
     echo '<pre>';
 
     echo '<pre>' . '<p>Breadth First Search</p>';
-    var_dump(breadthFirstSearch($rich_herbert, $david_herbert->getName(), $queue));
+    var_dump(breadthFirstSearch($rich_herbert, $david_herbert->getName()));
     echo '<pre>';
 
     echo '<pre>' . '<p>Breadth First Search No Global Array</p>';
