@@ -36,25 +36,4 @@ class FamilyMember {
     {
         return $this->name;
     }
-
-    public function breadthFirstSearch(FamilyMember $searchedPerson)
-    {
-    
-        if ($this->getName() ==  $searchedPerson->getName()){
-            echo $this->getName() . '<br>';
-            return;
-        } 
-
-        if($this->getMum()){
-            echo $this->getName() . '<br>';
-            $this->getMum()->breadthFirstSearch($searchedPerson);
-        }
-
-        if($this->getDad()){
-            echo $this->getName() . '<br>';
-            $this->getDad()->breadthFirstSearch($searchedPerson);
-        }
-
-        return;
-    }
 }

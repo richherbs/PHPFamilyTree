@@ -9,6 +9,8 @@
     <?php
 
     require_once 'FamilyMember.php';
+    require_once 'Searches.php';
+
 
     $david_herbert = new FamilyMember("David Herbert");
     $may_herbert = new FamilyMember("May Herbert");
@@ -16,9 +18,14 @@
     $stuart_herbert = new FamilyMember("Stuart Herbert", $may_herbert, $david_herbert);
     $sue_herbert = new FamilyMember("Sue Herbert", $eirian_wintour);
     $rich_herbert = new FamilyMember("Rich Herbert",$sue_herbert, $stuart_herbert); 
+    $queue = [];
 
+    echo '<pre>' . '<p>Depth First Search</p>';
+    depthFirstSearch($rich_herbert, $david_herbert);
     echo '<pre>';
-    $rich_herbert->breadthFirstSearch($may_herbert);
+
+    echo '<pre>' . '<p>Breadth First Search</p>';
+    breadthFirstSearch($rich_herbert, $stuart_herbert, $queue);
     echo '<pre>';
     ?>
 </body>
