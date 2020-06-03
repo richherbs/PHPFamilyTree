@@ -1,22 +1,21 @@
 <?php
 
-function depthFirstSearch(FamilyMember $rootFamilyMember, FamilyMember $searchedPerson)
+function depthFirstSearch(FamilyMember $aFamilyMember, string $searchedPerson) :?FamilyMember
 {
 
-    echo $rootFamilyMember->getName() . '<br>';
+    echo $aFamilyMember->getName() . '<br>';
 
-    if($rootFamilyMember->getName() === $searchedPerson->getName()) return true;
-
-    if($rootFamilyMember->getMum()) depthFirstSearch($rootFamilyMember->getMum(), $searchedPerson);
+    if($aFamilyMember->getName() === $searchedPerson) return $aFamilyMember;
+    if($aFamilyMember->getMum()) depthFirstSearch($aFamilyMember->getMum(), $searchedPerson);
     
-    if($rootFamilyMember->getDad()) depthFirstSearch($rootFamilyMember->getDad(), $searchedPerson);
+    if($aFamilyMember->getDad()) depthFirstSearch($aFamilyMember->getDad(), $searchedPerson);
 
-    return false;
+    return null;
 }
 
 function breadthFirstSearch(FamilyMember $rootFamilyMember, FamilyMember $searchedPerson, array $queue){
 
-    if($rootFamilyMember->getName() === $searchedPerson->getName()){
+    if($rootFamilyMember->getName() === $searchedPerson){
         echo $rootFamilyMember->getName() . '<br>';
         return true;
     }

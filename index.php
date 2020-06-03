@@ -21,7 +21,7 @@
     $queue = [];
 
     echo '<pre>' . '<p>Depth First Search</p>';
-    depthFirstSearch($rich_herbert, $david_herbert);
+    depthFirstSearch($rich_herbert, $david_herbert->getName());
     echo '<pre>';
 
     echo '<pre>' . '<p>Breadth First Search</p>';
