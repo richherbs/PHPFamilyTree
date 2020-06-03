@@ -21,11 +21,15 @@
     $queue = [];
 
     echo '<pre>' . '<p>Depth First Search</p>';
-    depthFirstSearch($rich_herbert, $david_herbert->getName());
+    var_dump(depthFirstSearch($rich_herbert, $david_herbert->getName()));
     echo '<pre>';
 
     echo '<pre>' . '<p>Breadth First Search</p>';
-    breadthFirstSearch($rich_herbert, $stuart_herbert, $queue);
+    var_dump(breadthFirstSearch($rich_herbert, $david_herbert->getName(), $queue));
+    echo '<pre>';
+
+    echo '<pre>' . '<p>Breadth First Search No Global Array</p>';
+    var_dump(breadthFirstSearchNoGlobalQueue($rich_herbert, $david_herbert->getName()));
     echo '<pre>';
     ?>
 </body>
