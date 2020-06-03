@@ -10,14 +10,16 @@
 
     require_once 'FamilyMember.php';
 
-    $rich_herbert = new FamilyMember("Rich Herbert", 
-        new FamilyMember("Sue Herbert", new FamilyMember("Eirian Wintour")), 
-        new FamilyMember("Stuart Herbert", new FamilyMember("David Herbert"), new FamilyMember("May Herbert"))
-    );
+    $david_herbert = new FamilyMember("David Herbert");
+    $may_herbert = new FamilyMember("May Herbert");
+    $eirian_wintour = new FamilyMember("Eirian Wintour");
+    $stuart_herbert = new FamilyMember("Stuart Herbert", $may_herbert, $david_herbert);
+    $sue_herbert = new FamilyMember("Sue Herbert", $eirian_wintour);
+    $rich_herbert = new FamilyMember("Rich Herbert",$sue_herbert, $stuart_herbert); 
 
-    echo "<pre>";
-    var_dump($rich_herbert);
-    echo "</pre>";
+    echo '<pre>';
+    $rich_herbert->breadthFirstSearch($may_herbert);
+    echo '<pre>';
     ?>
 </body>
 </html>
